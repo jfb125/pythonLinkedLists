@@ -1,0 +1,1 @@
+Length of test_removal_permutations is 24
