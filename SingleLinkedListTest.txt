@@ -1,6 +1,7 @@
 ... Testing SingleLinkedList push()
+... Testing SingleLinkedList push() returning 0 errors
 ... Testing linked list's pop()
-... Testing linked list's pop() returning 0 errors
+... Testing SingleLinkedList pop() returning 0 errors
 ... Testing SingleLinkedList shift()
 ... Testing SingleLinkedList unshift()
 ... Testing SingleLinkedList contains(obj)
