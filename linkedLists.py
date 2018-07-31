@@ -1,3 +1,24 @@
+# This file contains the code to implement two types of linked lists:
+#   Singly Linked where the list can only be traversed from head to tail
+#   Doubly Linked where the list can be traversed tail to head
+# This distinction is not made in the API (except the __init__ constructors).
+# The API for either type contains:
+#   push(obj)           - place obj at the end of the list
+#   pop()               - remove and return the obj at the end of the list
+#   shift(obj)          - place obj at the beginning of the list
+#   unshift()           - remove and return the obj at the beginning of the list
+#   remove(obj)         - find and remove one copy of obj from the list
+#   get(obj)            - return the index of the first copy of obj found
+#   first()             - return id of first element in list
+#   last()              - return id of last element in list
+#   count()             - return the number of objects in list
+#   dump()              - prints the contents of the list
+#   debug()             - calls dump() if the dbg_lvl is above 0
+#                           note that dbg_lvl is hard coded
+# For the SingleLinkedList, __init__(self, obj, nxt=None)
+# For the DoubleLinkedList, __init__(self, obj, nxt=None, prv=None
+
+
 class SingleLinkedListNode(object):
     """A node in a singly linked list"""
     def __init__(self, value=None, nxt=None):
@@ -14,7 +35,6 @@ class SingleLinkedList(object):
 
     def __init__(self, dbg_lvl=0):
         self.begin = None
-        self.end = None
         self.debug_level = dbg_lvl
         if self.debug_level > self.debug_level_none:
             self.debug("After constructor")
@@ -25,14 +45,12 @@ class SingleLinkedList(object):
             if self.begin is None:
                 # is this the head of the list?
                 self.begin = SingleLinkedListNode(obj, None)
-                self.end = self.begin
             else:
                 # find the end of the list
                 nval = self.begin
                 while nval.nxt is not None:
                     nval = nval.nxt
                 nval.nxt = SingleLinkedListNode(obj, None)
-                self.end = nval.nxt
         if self.debug_level > self.debug_level_none:
             if obj:
                 dbg_str = "After push(" + obj + ")"
@@ -48,7 +66,6 @@ class SingleLinkedList(object):
                 return_value = self.begin.value
                 self.begin.value = None
                 self.begin = None
-                self.end = None
             else:
                 nval = self.begin
                 # search for 2nd to last element
@@ -57,7 +74,7 @@ class SingleLinkedList(object):
                 return_value = nval.nxt.value
                 nval.nxt.value = None   # erase value
                 nval.nxt = None
-                self.end = nval
+                # self.end = nval
         if self.debug_level > self.debug_level_none:
             if return_value:
                 dbg_str = "pop() returning " + return_value
@@ -73,7 +90,6 @@ class SingleLinkedList(object):
             # otherwise, crate a new object and make it the head
             if self.begin is None:
                 self.begin = SingleLinkedListNode(obj)
-                self.end = self.begin
                 self.begin.nxt = None
             else:
                 old_head = self.begin
@@ -90,14 +106,12 @@ class SingleLinkedList(object):
         """Removes the first item from the list & returns it"""
         # if the list is empty, return None
         # if the list has one element, set the begin & end pointers to None
-        # if the list has more than one element, set the begin pointer to begin->next
+        # if the list has more than one element, set the begin pointer to begin->nxt
         return_value = None
         if self.begin is not None:
             return_value = self.begin.value
             old_head = self.begin
             self.begin = self.begin.nxt
-            if self.begin is None:
-                self.end = None
             old_head.value = None
             old_head.nxt = None
         if self.debug_level > self.debug_level_none:
@@ -121,9 +135,6 @@ class SingleLinkedList(object):
                     # self.unshift()
                     old_head = self.begin   # remember where the head is
                     self.begin = self.begin.nxt
-                    # if the list will be empty
-                    if self.begin is None:
-                        self.end = None
                     old_head.value = None   # erase the old head
                     old_head.nxt = None
                     dbg_str = "remove(" + obj + ") from start of list"
@@ -134,10 +145,9 @@ class SingleLinkedList(object):
                         nval = nval.nxt
                     if nval.nxt:
                         # if exited loop because of match
-                        if nval.nxt == self.end:    # if we are removing end
-                            self.end = nval
                         deleted_node = nval.nxt
                         nval.nxt = deleted_node.nxt
+                        # garbage collector should do this
                         deleted_node.value = None
                         deleted_node.nxt = None
                         dbg_str = "remove(" + obj +") from list"
@@ -148,11 +158,25 @@ class SingleLinkedList(object):
 
     def first(self):
         """Returns a *reference* to the first item"""
-        return id(self.begin)
+        if self.begin is None:
+            return None
+        else:
+            return id(self.begin)
 
     def last(self):
         """Returns a *reference* to the last item"""
-        return id(self.end)
+        if self.begin is None:
+            return None
+        else:
+            end = self.begin
+            if end.nxt is None:
+                # a list with only one element - at the end
+                return id(end.nxt)
+            else:
+                # move 'end' to last element
+                while end.nxt.nxt:
+                    end = end.nxt
+                return id(end)
 
     def count(self):
         """Returns the number of elements in the list"""
