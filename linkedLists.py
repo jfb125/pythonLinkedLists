@@ -190,7 +190,7 @@ class SingleLinkedList(object):
         """Dumps the contents of the list"""
         print(msg, end="")
         print(" list contains {} elements from {} to {}: ".format(self.count(), id(self.begin), id(self.end)), end="")
-        if self.begin is not None:
+        if self.begin:
             print("{}->{}".format(self.begin.value, self.begin.nxt))
         else:
             print()
@@ -199,3 +199,99 @@ class SingleLinkedList(object):
         if self.debug_level > self.debug_level_none:
             self.dump(msg)
     #   End of definition of singly linked list class
+
+
+class DoubleLinkedListNode(object):
+
+    def __init__(self, value=None, nxt=None, prv=None):
+        self.value = value
+        self.nxt = nxt
+        self.prv = prv
+
+    def __repr__(self):
+        # don't do format(self.prv, self.value, repr(self.nxt))
+        #  b/c the repr(self.nxt) will try to do a repr(self.prv), which is self.nxt, which is an infinite loop
+        return "{}<-{}->{}".format(id(self.prv), self.value, repr(self.nxt))
+
+
+class DoubleLinkedList(object):
+
+    debug_level_none = 0
+
+    def __init__(self, dbg_lvl=0):
+        self.begin = None
+        self.end = None
+        self.debug_level = dbg_lvl
+
+    def push(self, value):
+        """Pushes one element into the list"""
+        if self.end:  # not an empty list
+            prv_end = self.end
+            node = DoubleLinkedListNode(value, nxt=None, prv=self.end)
+            self.end.nxt = node
+            self.end = self.end.nxt
+        else:
+            self.begin = DoubleLinkedListNode(value, nxt=None, prv=None)
+            self.end = self.begin
+
+    def pop(self):
+        """Returns (and deletes) the final element in the list"""
+        return_value = None
+        if self.end:    # is not an empty list
+            return_value = self.end.value
+            if self.end.prv: # there is an element that is previous
+                p_old = self.end
+                self.end = self.end.prv
+                self.end.nxt = None
+                # garbage collector should do this, but I will be pendantic
+                p_old.value = None
+                p_old.nxt = None
+                p_old.prv = None
+            else:   # deleted only element in list
+                self.end = None
+                self.begin = None
+        return return_value
+
+    def shift(self, value):
+        """Adds an element to the beginning of the list"""
+        if self.begin:
+            #        begin
+            # None  <-Bob-> ...
+            self.begin.prv = DoubleLinkedListNode(value, nxt=self.begin, prv=None)
+            #                                      begin
+            # Bob points to None:           None  <-Bob-> ...
+            # Alice points to Bob:  None <-Alice->  Bob-> ...
+            self.begin.prv.nxt = self.begin
+            #                                      begin
+            # Bob points to Alice:  None <-Alice-><-Bob->
+            #
+            self.begin = self.begin.prv
+            # begin
+            # Alice-><-Bob-> ...
+        else:
+            # begin
+            # None
+            self.begin = DoubleLinkedListNode(value, nxt=None, prv=None)
+            #       begin
+            # None <-Bob-> None
+            self.end = self.begin
+        self.dump("After shift "+value+": ")
+
+    def count(self):
+        """Counts the number of elements in the list"""
+        cnt = 0
+        now = self.begin
+        while now:
+            cnt += 1
+            now = now.nxt
+        return cnt
+
+    # dump does not qualify against self.debug_level b/c if it is being called the user wants to see
+    def dump(self, msg=""):
+        print(msg, end="")
+        print(" list contains {} elements from {} to {}: ".format(self.count(), id(self.begin), id(self.end)), end="")
+        p = self.begin
+        while p:
+            print("[{}<-{}->{}]".format(id(p.prv), p.value, id(p.nxt)), end=", ")
+            p = p.nxt
+        print()

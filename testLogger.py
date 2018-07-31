@@ -2,7 +2,7 @@ class TestLogger:
     test_log_dst_screen = 1
     test_log_dst_file = 2
     test_log_dst_both = 3
-    test_log_level_none = 3
+    test_log_level_always = 3
     test_log_level_error = 2
     test_log_level_warning = 1
     test_log_level_info = 0

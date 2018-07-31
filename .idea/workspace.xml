@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04e18563-2a9b-4cbc-b5a2-67bfe62e2078" name="Default" comment="" />
+    <list default="true" id="04e18563-2a9b-4cbc-b5a2-67bfe62e2078" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/SingleLinkedListTest.txt" afterPath="$PROJECT_DIR$/SingleLinkedListTest.txt" />
+      <change beforePath="$PROJECT_DIR$/ex13.py" afterPath="$PROJECT_DIR$/ex13.py" />
+      <change beforePath="$PROJECT_DIR$/linkedLists.py" afterPath="$PROJECT_DIR$/linkedLists.py" />
+      <change beforePath="$PROJECT_DIR$/linkedListsTests.py" afterPath="$PROJECT_DIR$/linkedListsTests.py" />
+      <change beforePath="$PROJECT_DIR$/testLogger.py" afterPath="$PROJECT_DIR$/testLogger.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +21,31 @@
       <file leaf-file-name="ex13.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ex13.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="567" column="41" lean-forward="false" selection-start-line="567" selection-start-column="41" selection-end-line="567" selection-end-column="41" />
+            <state relative-caret-position="108">
+              <caret line="375" column="43" lean-forward="false" selection-start-line="375" selection-start-column="43" selection-end-line="375" selection-end-column="43" />
               <folding>
-                <element signature="e#7633#7677#0" expanded="true" />
+                <element signature="e#1#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DoubleLinkedListTest.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SingleLinkedListTest.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SingleLinkedListTest.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -26,18 +53,18 @@
       <file leaf-file-name="testLogger.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testLogger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="72">
+              <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linkedListsTests.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="linkedListsTests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/linkedListsTests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="292" column="0" lean-forward="false" selection-start-line="292" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
+            <state relative-caret-position="216">
+              <caret line="167" column="26" lean-forward="false" selection-start-line="167" selection-start-column="26" selection-end-line="167" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -46,8 +73,8 @@
       <file leaf-file-name="linkedLists.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/linkedLists.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2934">
-              <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+            <state relative-caret-position="481">
+              <caret line="68" column="3" lean-forward="true" selection-start-line="68" selection-start-column="3" selection-end-line="68" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -123,7 +150,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/SingleLinkedListTest.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/DoubleLinkedListTest.txt" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -180,7 +207,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -208,12 +234,12 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/linkedListsTests.py</url>
-          <line>79</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/linkedLists.py</url>
+          <line>256</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -223,7 +249,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -257,7 +283,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -267,7 +293,7 @@
         <state relative-caret-position="3744">
           <caret line="208" column="0" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -284,7 +310,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -294,7 +320,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -304,7 +330,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -321,7 +347,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -338,7 +364,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -348,7 +374,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -360,43 +386,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SingleLinkedListTest.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="845">
-          <caret line="610" column="0" lean-forward="false" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testLogger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="72">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/linkedLists.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2934">
-          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        <state relative-caret-position="481">
+          <caret line="68" column="3" lean-forward="true" selection-start-line="68" selection-start-column="3" selection-end-line="68" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/linkedListsTests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="167" column="26" lean-forward="false" selection-start-line="167" selection-start-column="26" selection-end-line="167" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ex13.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="567" column="41" lean-forward="false" selection-start-line="567" selection-start-column="41" selection-end-line="567" selection-end-column="41" />
+        <state relative-caret-position="108">
+          <caret line="375" column="43" lean-forward="false" selection-start-line="375" selection-start-column="43" selection-end-line="375" selection-end-column="43" />
           <folding>
-            <element signature="e#7633#7677#0" expanded="true" />
+            <element signature="e#1#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/linkedListsTests.py">
+    <entry file="file://$PROJECT_DIR$/DoubleLinkedListTest.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="292" column="0" lean-forward="false" selection-start-line="292" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SingleLinkedListTest.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

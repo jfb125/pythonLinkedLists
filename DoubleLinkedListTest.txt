@@ -1,0 +1,7 @@
+Testing class DoubleLinkedList
+... Testing linked list push()
+... Testing linked list push() returning 0 errors
+... Testing linked list pop()
+... Testing linked list pop() returning 0 errors
+... Testing linked shift()
+DoubleLinkedList TEST PASSED with 0 errors

@@ -73,7 +73,7 @@ class TestLinkedList:
         """Tests push() by placing things in the list then counting - not a true test"""
 
         test_push_error_count = 0
-        self.logger("... Testing SingleLinkedList push()", TestLogger.test_log_level_info)
+        self.logger("... Testing linked list push()", TestLogger.test_log_level_info)
 
         if self.list_class:
             # create the list to be tested
@@ -91,15 +91,15 @@ class TestLinkedList:
                     self.logger("... ERROR: push("+self.int_to_ojb(i)+") does not result in "+str(i)+" count()",
                                 TestLogger.test_log_level_error)
         # done
-        self.logger("... Testing SingleLinkedList push() returning "+str(test_push_error_count)+" errors",
+        self.logger("... Testing linked list push() returning "+str(test_push_error_count)+" errors",
                     TestLogger.test_log_level_info)
         return test_push_error_count
 
-    def test_pop(self, logger=None):
+    def test_pop(self):
         """Tests pop() by placing things in order in the list, then removing"""
 
         test_pop_error_count = 0
-        self.logger("... Testing linked list's pop()", TestLogger.test_log_level_info)
+        self.logger("... Testing linked list pop()", TestLogger.test_log_level_info)
 
         # create the list to be tested
         if self.list_class:
@@ -127,14 +127,13 @@ class TestLinkedList:
                 self.logger("... linked list pop() from empty list did not return None", TestLogger.test_log_level_error)
 
         # done
-        self.logger("... Testing SingleLinkedList pop() returning "+str(test_pop_error_count)+" errors",
+        self.logger("... Testing linked list pop() returning "+str(test_pop_error_count)+" errors",
                     TestLogger.test_log_level_info)
         return test_pop_error_count
 
-    def test_shift(self, logger=None):
+    def test_shift(self):
         test_shift_error_count = 0
-        if logger is not None:
-            logger("... Testing SingleLinkedList shift()", TestLogger.test_log_level_info)
+        self.logger("... Testing linked shift()", TestLogger.test_log_level_info)
         colors = self.list_class()
         colors.shift("Cadmium Orange")
         assert colors.count() == 1
@@ -153,10 +152,9 @@ class TestLinkedList:
         assert colors.pop() is None
         return test_shift_error_count
 
-    def test_unshift(self, logger=None):
+    def test_unshift(self):
         test_unshift_error_count = 0
-        if logger is not None:
-            logger("... Testing SingleLinkedList unshift()", TestLogger.test_log_level_info)
+        self.logger("... Testing SingleLinkedList unshift()", TestLogger.test_log_level_info)
         colors = self.list_class()
         colors.push("Viridian")
         colors.push("Sap Green")
@@ -167,57 +165,48 @@ class TestLinkedList:
         assert colors.unshift() is None
         return test_unshift_error_count
 
-    def test_contains(self, logger=None):
+    def test_contains(self):
         """Tests that the linked list .count(obj) method works"""
         test_contains_error_count = 0
-        if logger is not None:
-            logger("... Testing SingleLinkedList contains(obj)", TestLogger.test_log_level_info)
+        self.logger("... Testing SingleLinkedList contains(obj)", TestLogger.test_log_level_info)
         colors = self.list_class()
         if 0 != colors.contains("Phtalo_Blue"):
             test_contains_error_count += 1
-            if logger:
-                logger("Phtalo_Blue contained in empty list", TestLogger.test_log_level_error)
+            self.logger("Phtalo_Blue contained in empty list", TestLogger.test_log_level_error)
         for i in range(0, 4):
             color_count = colors.contains("Phtalo_Blue")
             if i != color_count:
                 test_contains_error_count += 1
-                if logger:
-                    error_str = """contains("Phtalo_Blue") should be """+str(i)+" but returned "+color_count
-                    logger(error_str, TestLogger.test_log_level_error)
+                error_str = """contains("Phtalo_Blue") should be """+str(i)+" but returned "+color_count
+                self.logger(error_str, TestLogger.test_log_level_error)
             if 0 != colors.contains("Alazarin"):
                 test_contains_error_count += 1
-                if logger is not None:
-                    logger("Alazarin contained in list when not pushed", TestLogger.test_log_level_error)
+                self.logger("Alazarin contained in list when not pushed", TestLogger.test_log_level_error)
             colors.push("Phtalo_Blue")
         for i in range(0, 4):
             color_count = colors.contains("Alazarin")
             if i != color_count:
                 test_contains_error_count += 1
-                if logger:
-                    error_str = """contains("Alazarin") should be """+str(i)+" but returned "+color_count
-                    logger(error_str, TestLogger.test_log_level_error)
+                error_str = """contains("Alazarin") should be """+str(i)+" but returned "+color_count
+                self.logger(error_str, TestLogger.test_log_level_error)
             if 4 != colors.contains("Phtalo_Blue"):
                 test_contains_error_count += 1
-                if logger:
-                    logger("Phtalo_Blue contains is not 4", TestLogger.test_log_level_error)
+                self.logger("Phtalo_Blue contains is not 4", TestLogger.test_log_level_error)
             colors.push("Alazarin")
         return test_contains_error_count
 
-    def test_remove(self, logger=None):
+    def test_remove(self):
         error_count = 0
-        if logger:
-            logger("... Testing Single LinkedList remove(obj)", TestLogger.test_log_level_info)
+        self.logger("... Testing Single LinkedList remove(obj)", TestLogger.test_log_level_info)
         colors = self.list_class()
         colors.remove(None)
         test_strings = ["Zero", "One", "Two", "Three"]
         num_permutations = len(self.test_removal_permutations)
-        if logger:
-            out_string = "Number of test_removal_permutations is " + str(num_permutations)
-            logger(out_string, TestLogger.test_log_level_error)
+        out_string = "Number of test_removal_permutations is " + str(num_permutations)
+        self.logger(out_string, TestLogger.test_log_level_error)
         for push_order in range(0, self.num_permutations):
-            if logger:
-                out_string = "Pushing order #"+str(push_order)+" is "+str(self.test_removal_permutations[push_order])
-                logger(out_string, TestLogger.test_log_level_info)
+            out_string = "Pushing order #"+str(push_order)+" is "+str(self.test_removal_permutations[push_order])
+            self.logger(out_string, TestLogger.test_log_level_info)
             for remove_order in range(0, num_permutations):
                 num_pushes = len(self.test_removal_permutations[push_order])
                 for j in range(0, num_pushes):
@@ -226,21 +215,18 @@ class TestLinkedList:
                 for j in range(0, num_pushes):
                     if 1 != colors.contains(test_strings[self.test_removal_permutations[push_order][j]]):
                         error_count += 1
-                        if logger:
-                            out_string = "Pushed value not found: " + test_strings[self.test_removal_permutations[push_order][j]]
-                            logger(out_string, TestLogger.test_log_level_error)
+                        out_string = "Pushed value not found: " + test_strings[self.test_removal_permutations[push_order][j]]
+                        self.logger(out_string, TestLogger.test_log_level_error)
                 # remove the objects in a specified order, checking to make sure they are not there
-                if logger:
-                    out_string = "Removing order #"+str(remove_order)+": "+str(self.test_removal_permutations[remove_order])
-                    logger(out_string)
+                out_string = "Removing order #"+str(remove_order)+": "+str(self.test_removal_permutations[remove_order])
+                self.logger(out_string)
                 for j in range(0, num_pushes):
                     removal_object = test_strings[self.test_removal_permutations[remove_order][j]]
                     colors.remove(removal_object)
                     if colors.contains(removal_object):
                         error_count += 1
-                        if logger:
-                            out_string = "Removed object still in list: " + removal_object
-                            logger(out_string, TestLogger.test_log_level_error)
+                        out_string = "Removed object still in list: " + removal_object
+                        self.logger(out_string, TestLogger.test_log_level_error)
         # verify that it removes a list that has all of the same value obj
         for i in range(0, 4):
             colors.push("Cyan")
@@ -249,16 +235,14 @@ class TestLinkedList:
             num_elements = colors.count()
             if i != num_elements:
                 error_count += 1
-                if logger:
-                    out_string = "Removed "+str(4-i)+" copies of Cyan but list contains "+num_elements
-                    logger(out_string, TestLogger.test_log_level_error)
+                out_string = "Removed "+str(4-i)+" copies of Cyan but list contains "+num_elements
+                self.logger(out_string, TestLogger.test_log_level_error)
         return error_count
 
-    def test_first_last(self, logger):
+    def test_first_last(self):
         """Allows user to test first & last (return reference) by reading screen"""
-        if logger:
-            out_string = "... Testing first & last methods"
-            logger(out_string, TestLogger.test_log_level_info)
+        out_string = "... Testing first & last methods"
+        self.logger(out_string, TestLogger.test_log_level_info)
         colors = self.list_class()
         print("colors.first() is ", colors.first())
         print("colors.last() is ", colors.last())
@@ -272,87 +256,73 @@ class TestLinkedList:
             print("colors.last() is ", colors.last())
         return 0
 
-    def test_get(self, logger):
+    def test_get(self):
         """Tests the get(index)"""
         test_get_error_count = 0
-        if logger:
-            out_string = "... Testing SingleLinkedList get"
-            logger(out_string, TestLogger.test_log_level_info)
+        out_string = "... Testing SingleLinkedList get"
+        self.logger(out_string, TestLogger.test_log_level_info)
         colors = self.list_class()
         # Test empty list
         for i in range(-1, 2, 1):
-            if colors.get(i) is not None:
+            if colors.get(i) is not None:   # is not None for emphasis
                 test_get_error_count += 1
-                if logger:
-                    out_string = "colors.get("+str(i)+") from empty list did not return None"
-                    logger(out_string, TestLogger.test_log_level_error)
+                out_string = "colors.get("+str(i)+") from empty list did not return None"
+                self.logger(out_string, TestLogger.test_log_level_error)
         # Test a list that only contains one object, Phtalo Blue
         colors.push("Phtalo Blue")
         if colors.get(0) != "Phtalo Blue":
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(0) failed to return "Phtalo Blue" """
-                logger(out_string, TestLogger.test_log_level_error)
-        if colors.get(-1) is not None:
+            out_string = """colors.get(0) failed to return "Phtalo Blue" """
+            self.logger(out_string, TestLogger.test_log_level_error)
+        if colors.get(-1) is not None:  # is not None for emphasis
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(-1) from list {"Phtalo Blue",None} did not return None """
-                logger(out_string, TestLogger.test_log_level_error)
-        if colors.get(1) is not None:
+            out_string = """colors.get(-1) from list {"Phtalo Blue",None} did not return None """
+            self.logger(out_string, TestLogger.test_log_level_error)
+        if colors.get(1) is not None:   # is not None for emphasis
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(1) from list {"Phtalo Blue",None} did not return None """
-                logger(out_string, TestLogger.test_log_level_error)
+            out_string = """colors.get(1) from list {"Phtalo Blue",None} did not return None """
+            self.logger(out_string, TestLogger.test_log_level_error)
         # Test list that contains two objects, Phtalo Blue and Alazarin
         colors.push("Alazarin")
         if colors.get(0) != "Phtalo Blue":
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(0) failed to return "Phtalo Blue" """
-                logger(out_string, TestLogger.test_log_level_error)
+            out_string = """colors.get(0) failed to return "Phtalo Blue" """
+            self.logger(out_string, TestLogger.test_log_level_error)
         if colors.get(1) != "Alazarin":
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(1) failed to return "Alazarin" """
-                logger(out_string, TestLogger.test_log_level_error)
-        if colors.get(-1) is not None:
+            out_string = """colors.get(1) failed to return "Alazarin" """
+            self.logger(out_string, TestLogger.test_log_level_error)
+        if colors.get(-1) is not None:  # is not None for emphasis
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(-1) from list {"Phtalo Blue",None} did not return None """
-                logger(out_string, TestLogger.test_log_level_error)
-        if colors.get(2) is not None:
+            out_string = """colors.get(-1) from list {"Phtalo Blue",None} did not return None """
+            self.logger(out_string, TestLogger.test_log_level_error)
+        if colors.get(2) is not None:   # is not None for emphasis
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(1) from list {"Phtalo Blue",None} did not return None """
-                logger(out_string, TestLogger.test_log_level_error)
+            out_string = """colors.get(1) from list {"Phtalo Blue",None} did not return None """
+            self.logger(out_string, TestLogger.test_log_level_error)
         # Test a list with 3 objects Phtalo Blue, Alazarin, Cadmium Orange
         colors.push("Cadmium Orange")
         if colors.get(0) != "Phtalo Blue":
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(0) failed to return "Phtalo Blue" """
-                logger(out_string, TestLogger.test_log_level_error)
+            out_string = """colors.get(0) failed to return "Phtalo Blue" """
+            self.logger(out_string, TestLogger.test_log_level_error)
         if colors.get(1) != "Alazarin":
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(1) failed to return "Alazarin" """
-                logger(out_string, TestLogger.test_log_level_error)
+            out_string = """colors.get(1) failed to return "Alazarin" """
+            self.logger(out_string, TestLogger.test_log_level_error)
         if colors.get(2) != "Cadmium Orange":
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(2) failed to return "Cadmium Orange" """
-                logger(out_string, TestLogger.test_log_level_error)
-        if colors.get(-1) is not None:
+            out_string = """colors.get(2) failed to return "Cadmium Orange" """
+            self.logger(out_string, TestLogger.test_log_level_error)
+        if colors.get(-1) is not None:  # is not None for emphasis
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(-1) from list {"Phtalo Blue","Alazarin","Cadmium Orange",None}"""+\
-                             """did not return None"""
-                logger(out_string, TestLogger.test_log_level_error)
-        if colors.get(3) is not None:
+            out_string = """colors.get(-1) from list {"Phtalo Blue","Alazarin","Cadmium Orange",None}"""+\
+                         """"did not return None"""
+            self.logger(out_string, TestLogger.test_log_level_error)
+        if colors.get(3) is not None:   # is not None for emphasis
             test_get_error_count += 1
-            if logger:
-                out_string = """colors.get(3) from list {"Phtalo Blue","Alazarin","Cadmium Orange",None}"""+\
-                             """did not return None"""
-                logger(out_string, TestLogger.test_log_level_error)
+            out_string = """colors.get(3) from list {"Phtalo Blue","Alazarin","Cadmium Orange",None}"""+\
+                         """did not return None"""
+            self.logger(out_string, TestLogger.test_log_level_error)
         return test_get_error_count
     # end of class TestLinkedList

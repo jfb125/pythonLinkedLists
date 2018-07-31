@@ -1,8 +1,9 @@
-... Testing SingleLinkedList push()
-... Testing SingleLinkedList push() returning 0 errors
-... Testing linked list's pop()
-... Testing SingleLinkedList pop() returning 0 errors
-... Testing SingleLinkedList shift()
+Testing class SingleLinkedList
+... Testing linked list push()
+... Testing linked list push() returning 0 errors
+... Testing linked list pop()
+... Testing linked list pop() returning 0 errors
+... Testing linked shift()
 ... Testing SingleLinkedList unshift()
 ... Testing SingleLinkedList contains(obj)
 ... Testing Single LinkedList remove(obj)
@@ -609,4 +610,4 @@ Removing order #22: [3, 2, 0, 1]
 Removing order #23: [3, 2, 1, 0]
 ... Testing first & last methods
 ... Testing SingleLinkedList get
-... TEST PASSED with 0 errors
+SingleLinkedList TEST PASSED with 0 errors
