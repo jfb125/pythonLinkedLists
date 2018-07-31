@@ -218,7 +218,7 @@ class DoubleLinkedList(object):
 
     debug_level_none = 0
 
-    def __init__(self, dbg_lvl=0):
+    def __init__(self, dbg_lvl=1):
         self.begin = None
         self.end = None
         self.debug_level = dbg_lvl
@@ -233,6 +233,8 @@ class DoubleLinkedList(object):
         else:
             self.begin = DoubleLinkedListNode(value, nxt=None, prv=None)
             self.end = self.begin
+        if self.debug_level > self.debug_level_none:
+            self.dump("After push, ")
 
     def pop(self):
         """Returns (and deletes) the final element in the list"""
@@ -250,6 +252,8 @@ class DoubleLinkedList(object):
             else:   # deleted only element in list
                 self.end = None
                 self.begin = None
+        if self.debug_level > self.debug_level_none:
+            self.dump("After pop ")
         return return_value
 
     def shift(self, value):
@@ -275,7 +279,18 @@ class DoubleLinkedList(object):
             #       begin
             # None <-Bob-> None
             self.end = self.begin
-        self.dump("After shift "+value+": ")
+        if self.debug_level > self.debug_level_none:
+            self.dump("After shift "+value+": ")
+
+    def contains(self, value):
+        """Counts the number of occurrences of value in the list"""
+        cnt = 0
+        p = self.begin
+        while p:
+            if p.value == value:
+                cnt += 1
+            p = p.nxt
+        return cnt
 
     def count(self):
         """Counts the number of elements in the list"""
@@ -285,6 +300,50 @@ class DoubleLinkedList(object):
             cnt += 1
             now = now.nxt
         return cnt
+
+    def unshift(self):
+        """Removes the element at the front (head) of the list"""
+        return_value = None
+        if self.begin:
+            return_value = self.begin.value
+            # begin
+            # Alice-><-Bob-> ...
+            self.begin = self.begin.nxt
+            if self.begin is None:
+                self.end = None
+        if self.debug_level > self.debug_level_none:
+            self.dump("After unshift, ")
+        return return_value
+
+    def remove(self, value):
+        """Finds a matching value and removes it from the list (only the first match)"""
+        # the search has to look 2 elements ahead to update a prv pointer
+        # for this reason, an empty list or a list with only 1 element are handled as special cases
+        if self.begin:                          # it is not an empty list
+            if self.begin.value == value:       # if the first value is the intended value:
+                if self.begin.nxt:
+                    # there is a node after the beginning node
+                    self.begin.nxt.prv = None
+                    self.begin = self.begin.nxt
+                else:
+                    # we deleted the only element in the list
+                    self.begin = None
+                    self.end = None
+            else:                               # the list has at least two elements
+                p = self.begin
+                while p.nxt:
+                    if p.nxt.value == value:        # if the next element needs to be removed
+                        before = p
+                        after = p.nxt.nxt
+                        if after:               # if there is an after
+                            after.prv = before  # ... update after's previous pointer
+                        else:
+                            self.end = before   # ... nothing after the deleted element, so we deleted end of list
+                        before.nxt = after
+                        break
+                    p = p.nxt
+        if self.debug_level > self.debug_level_none:
+            self.dump("After remove, ")
 
     # dump does not qualify against self.debug_level b/c if it is being called the user wants to see
     def dump(self, msg=""):

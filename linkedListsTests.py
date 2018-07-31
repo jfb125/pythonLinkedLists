@@ -26,8 +26,7 @@ class TestLinkedList:
          [3, 0, 1, 2], [3, 0, 2, 1], [3, 1, 0, 2], [3, 1, 2, 0], [3, 2, 0, 1], [3, 2, 1, 0]]
 
     # Default constructor
-    def __init__(self, linked_list_class=None, logger=None, permutations=None,
-                 fname="defaultLinkedListTestsResultsName.txt"):
+    def __init__(self, linked_list_class=None, logger=None, permutations=None):
         if linked_list_class:
             self.list_class = linked_list_class
         else:
@@ -133,7 +132,7 @@ class TestLinkedList:
 
     def test_shift(self):
         test_shift_error_count = 0
-        self.logger("... Testing linked shift()", TestLogger.test_log_level_info)
+        self.logger("... Testing linked list shift()", TestLogger.test_log_level_info)
         colors = self.list_class()
         colors.shift("Cadmium Orange")
         assert colors.count() == 1
@@ -154,7 +153,7 @@ class TestLinkedList:
 
     def test_unshift(self):
         test_unshift_error_count = 0
-        self.logger("... Testing SingleLinkedList unshift()", TestLogger.test_log_level_info)
+        self.logger("... Testing linked list unshift()", TestLogger.test_log_level_info)
         colors = self.list_class()
         colors.push("Viridian")
         colors.push("Sap Green")
@@ -168,7 +167,7 @@ class TestLinkedList:
     def test_contains(self):
         """Tests that the linked list .count(obj) method works"""
         test_contains_error_count = 0
-        self.logger("... Testing SingleLinkedList contains(obj)", TestLogger.test_log_level_info)
+        self.logger("... Testing lnked list contains(obj)", TestLogger.test_log_level_info)
         colors = self.list_class()
         if 0 != colors.contains("Phtalo_Blue"):
             test_contains_error_count += 1
@@ -197,46 +196,53 @@ class TestLinkedList:
 
     def test_remove(self):
         error_count = 0
-        self.logger("... Testing Single LinkedList remove(obj)", TestLogger.test_log_level_info)
-        colors = self.list_class()
-        colors.remove(None)
+        self.logger("... Testing linked list remove(obj)", TestLogger.test_log_level_info)
+        UUT = self.list_class()
+        UUT.remove(None)    # this should have no effect
+        del UUT
         test_strings = ["Zero", "One", "Two", "Three"]
         num_permutations = len(self.test_removal_permutations)
         out_string = "Number of test_removal_permutations is " + str(num_permutations)
         self.logger(out_string, TestLogger.test_log_level_error)
         for push_order in range(0, self.num_permutations):
-            out_string = "Pushing order #"+str(push_order)+" is "+str(self.test_removal_permutations[push_order])
-            self.logger(out_string, TestLogger.test_log_level_info)
+            # out_string = "Pushing order #"+str(push_order)+" is "+str(self.test_removal_permutations[push_order])
+            UUT = self.list_class()
             for remove_order in range(0, num_permutations):
                 num_pushes = len(self.test_removal_permutations[push_order])
+                out_string = "Pushing order #"+str(push_order)+" is "+str(self.test_removal_permutations[push_order])
+                self.logger(out_string, TestLogger.test_log_level_info)
                 for j in range(0, num_pushes):
-                    colors.push(test_strings[self.test_removal_permutations[push_order][j]])
+                    UUT.push(test_strings[self.test_removal_permutations[push_order][j]])
                 # test that all of the test objects are in the list
                 for j in range(0, num_pushes):
-                    if 1 != colors.contains(test_strings[self.test_removal_permutations[push_order][j]]):
+                    if 1 != UUT.contains(test_strings[self.test_removal_permutations[push_order][j]]):
                         error_count += 1
-                        out_string = "Pushed value not found: " + test_strings[self.test_removal_permutations[push_order][j]]
+                        out_string = "Pushed value not found: "+\
+                                     test_strings[self.test_removal_permutations[push_order][j]]
                         self.logger(out_string, TestLogger.test_log_level_error)
                 # remove the objects in a specified order, checking to make sure they are not there
                 out_string = "Removing order #"+str(remove_order)+": "+str(self.test_removal_permutations[remove_order])
                 self.logger(out_string)
                 for j in range(0, num_pushes):
                     removal_object = test_strings[self.test_removal_permutations[remove_order][j]]
-                    colors.remove(removal_object)
-                    if colors.contains(removal_object):
+                    UUT.remove(removal_object)
+                    if UUT.contains(removal_object):
                         error_count += 1
                         out_string = "Removed object still in list: " + removal_object
                         self.logger(out_string, TestLogger.test_log_level_error)
+            del UUT
         # verify that it removes a list that has all of the same value obj
+        UUT = self.list_class()
         for i in range(0, 4):
-            colors.push("Cyan")
+            UUT.push("Cyan")
         for i in range(3, -1, -1):
-            colors.remove("Cyan")
-            num_elements = colors.count()
+            UUT.remove("Cyan")
+            num_elements = UUT.count()
             if i != num_elements:
                 error_count += 1
-                out_string = "Removed "+str(4-i)+" copies of Cyan but list contains "+num_elements
+                out_string = "Removed "+str(4-i)+" copies of Cyan but list contains "+str(num_elements)
                 self.logger(out_string, TestLogger.test_log_level_error)
+        del UUT
         return error_count
 
     def test_first_last(self):
@@ -325,4 +331,22 @@ class TestLinkedList:
                          """did not return None"""
             self.logger(out_string, TestLogger.test_log_level_error)
         return test_get_error_count
+
+    def test_all(self):
+        """Runs all defined tests & returns the number of errors"""
+        if self.list_class == self.DefaultClass:
+            print("Could not run test on invalid class")
+            raise TypeError
+            return None
+        else:
+            master_error_count = 0
+            master_error_count += self.test_push()
+            master_error_count += self.test_pop()
+            master_error_count += self.test_shift()
+            master_error_count += self.test_unshift()
+            master_error_count += self.test_contains()
+            master_error_count += self.test_remove()
+            master_error_count += self.test_first_last()
+            master_error_count += self.test_get()
+            return master_error_count
     # end of class TestLinkedList

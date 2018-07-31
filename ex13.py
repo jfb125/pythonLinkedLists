@@ -369,14 +369,7 @@ master_error_count = 0
 logger = TestLogger("SingleLinkedListTest.txt")
 logger.log_to_both("Testing class SingleLinkedList", logger.test_log_level_always)
 tester = TestLinkedList(SingleLinkedList, logger.test_log)
-master_error_count += tester.test_push()
-master_error_count += tester.test_pop()
-master_error_count += tester.test_shift()
-master_error_count += tester.test_unshift()
-master_error_count += tester.test_contains()
-master_error_count += tester.test_remove()
-master_error_count += tester.test_first_last()
-master_error_count += tester.test_get()
+master_error_count += tester.test_all()
 if master_error_count == 0:
     test_out_string = "SingleLinkedList TEST PASSED with "+str(master_error_count)+" errors"
 else:
@@ -392,6 +385,9 @@ tester = TestLinkedList(DoubleLinkedList, logger.test_log)
 master_error_count += tester.test_push()
 master_error_count += tester.test_pop()
 master_error_count += tester.test_shift()
+master_error_count += tester.test_unshift()
+master_error_count += tester.test_contains()
+master_error_count += tester.test_remove()
 if master_error_count == 0:
     test_out_string = "DoubleLinkedList TEST PASSED with "+str(master_error_count)+" errors"
 else:
